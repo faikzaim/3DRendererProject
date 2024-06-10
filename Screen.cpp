@@ -1,8 +1,6 @@
 
 #include "Screen.h"
 
-bool Screen::isInitialised = false;
-
 Screen::Screen(int width, int height) {
     this->w = width;
     this->h = height;

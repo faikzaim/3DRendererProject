@@ -15,9 +15,6 @@ private:
     SDL_Surface* surf;
 
 public:
-    /*This bool keeps track whether the SDL video subsystem has been initialised already.
-     * If it already has been, there is no need to run SDL_Init() again.*/
-    static bool isInitialised;
     //Creates a window with the specified dimensions.
     Screen(int width, int height);
     //Destroys the renderer and the window dedicated to the given screen.
