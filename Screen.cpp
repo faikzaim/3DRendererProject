@@ -31,24 +31,19 @@ Screen::~Screen() {
     SDL_DestroyWindow(window);
     printf("Freed the memory.\n");
 }
-void Screen::SetPixel(int x, int y, Pixel pixel) const {
-    SDL_LockSurface(surf); //Locked for access to raw pixel data
+void Screen::SetPixel(unsigned int x, unsigned int y, Pixel pixel) const {
     uint32_t *pixels = (uint32_t*)surf->pixels;
     //Accessing the correct memory location for the pixel we want to manipulate.
     pixels[x + (y * w)] = (pixel.r<<16)|(pixel.g<<8)|(pixel.b);
-    //This should be done after manipulating pixel data to not cause any memory leaks.
-    SDL_UnlockSurface(surf);
 }
-Pixel Screen::GetPixel(int x, int y) const {
+Pixel Screen::GetPixel(unsigned int x, unsigned int y) const {
     Pixel pixelResult;
-    SDL_LockSurface(surf);
     uint32_t *pixels = (uint32_t*) surf->pixels;
     //Getting the pixel data for the desired (x,y) coordinate
     uint32_t result = pixels[x + (y * surf->w)];
     pixelResult.r = result>>16;
     pixelResult.g = (result>>8)&0xFF;
     pixelResult.b = result&0xFF;
-    SDL_UnlockSurface(surf);
     return pixelResult;
 }
 void Screen::RenderFrame() const {

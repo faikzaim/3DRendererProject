@@ -20,9 +20,9 @@ public:
     //Destroys the renderer and the window dedicated to the given screen.
     ~Screen();
     //Places the desired pixel at coordinate (x,y).
-    void SetPixel(int x, int y, Pixel pixel) const;
+    void SetPixel(unsigned int x, unsigned int y, Pixel pixel) const;
     //Retrives the pixel at coordinate(x,y).
-    Pixel GetPixel(int x, int y) const;
+    Pixel GetPixel(unsigned int x, unsigned int y) const;
     /*Renders the frame, any pixels changed before this function is called is written
      * to the buffer and not displayed.*/
     void RenderFrame() const;
