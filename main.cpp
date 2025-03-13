@@ -1,6 +1,7 @@
 
 #include "Screen.h"
 #include "Vector3.h"
+#include "Matrix.h"
 #include "SDLManager.h"
 #include <cmath>
 #include <iostream>
@@ -68,11 +69,23 @@ void DrawLine(Point p1, Point p2, Pixel colour, Screen* screen) {
 }
 
 int main(int argc, char* argv[]) {
-    printf("Hello World!\n");
-    auto v1 = Vector3(1, 5, 0);
-    auto v2 = Vector3(2, 2, 5);
-    float dotProd = v1 * v2;
-    printf("Dot Product: %f\n", dotProd);
+    auto mat1 = Matrix(3,3);
+    auto mat2 = Matrix(3,3);
+    mat1(0,0) = 1, mat1(0,1) = 2, mat1(0,2) = 3,
+    mat1(1,0) = 4; mat1(1,1) = 5, mat1(1,2) = 6,
+    mat1(2,0) = 7; mat1(2,1) = 8, mat1(2,2) = 9;
+
+    mat2(0,0) = 5, mat2(0,1) = 3, mat2(0,1) = 7,
+    mat2(1,0) = 9; mat2(1,1) = 1, mat2(1,2) = 2,
+    mat2(2,0) = 7; mat2(2,1) = 1, mat2(2,2) = 1;
+
+    Matrix matres = mat1 * mat2;
+
+    printf("[%f %f %f \n %f %f %f \n %f %f %f]\n",
+        matres(0,0), matres(0,1), matres(0,2),
+        matres(1,0), matres(1,1), matres(1,2),
+        matres(2,0), matres(2,1), matres(2,2));
+
     auto screen = Screen(500, 500);
     DrawLine({300,5}, {120,350},{255,0,0}, &screen);
     DrawLine({20,55}, {120,350},{255,0,0}, &screen);
