@@ -1,5 +1,8 @@
 
 #include "SDLManager.h"
+
+#include <cstdio>
+
 SDLManager& SDLManager::GetSDLManager() {
     return s_Instance;
 }

@@ -1,5 +1,6 @@
 
 #include "Screen.h"
+#include "Vector3.h"
 #include "SDLManager.h"
 #include <cmath>
 #include <iostream>
@@ -67,7 +68,12 @@ void DrawLine(Point p1, Point p2, Pixel colour, Screen* screen) {
 }
 
 int main(int argc, char* argv[]) {
-    auto screen = Screen(1000, 1000);
+    printf("Hello World!\n");
+    auto v1 = Vector3(1, 5, 0);
+    auto v2 = Vector3(2, 2, 5);
+    float dotProd = v1 * v2;
+    printf("Dot Product: %f\n", dotProd);
+    auto screen = Screen(500, 500);
     DrawLine({300,5}, {120,350},{255,0,0}, &screen);
     DrawLine({20,55}, {120,350},{255,0,0}, &screen);
     DrawLine({20,55}, {300,5},{255,0,0}, &screen);
@@ -75,6 +81,6 @@ int main(int argc, char* argv[]) {
     screen.SetPixel(20, 55, {0,255,0});
     screen.SetPixel(120, 350, {0,255,0});
     screen.RenderFrame();
-    Screen::Delay(20000);
+    Screen::Delay(2000);
     return 0;
 }
